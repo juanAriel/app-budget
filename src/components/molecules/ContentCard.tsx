@@ -1,16 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ImageComponent from "../atoms/Image";
+import { BudgetType } from "../../utils/BudgetType";
+interface ContentCardProps {
+  onPres: (name: string) => void;
+}
 
-const ContentCard = () => {
+const ContentCard: React.FC<ContentCardProps> = ({ onPres }) => {
   return (
-    <View style={styles.container}>
-      <ImageComponent
-        style={styles.image}
-        source={require("../../../assets/sale.png")}
-      ></ImageComponent>
-      <Text style={styles.text}> Mano {"\n"} de {"\n"} obra</Text>
-    </View>
+    <>
+      {BudgetType.map((type) => (
+        <TouchableOpacity key={type.id} onPress={() => onPres(type.navigation)}>
+          <View style={styles.container}>
+            <ImageComponent
+              style={styles.image}
+              source={type.image}
+            ></ImageComponent>
+            <Text style={styles.text}>{type.name.split(" ").join("\n")}</Text>
+          </View>
+        </TouchableOpacity>
+      ))}
+    </>
   );
 };
 
@@ -24,14 +34,15 @@ const styles = StyleSheet.create({
     width: 350,
     flexDirection: "row",
     borderRadius: 15,
-    borderWidth:2
+    borderWidth: 2,
   },
   text: {
-    textAlign:"center",
+    textAlign: "center",
     color: "#3D5A80",
     fontSize: 35,
     fontWeight: "bold",
-    paddingLeft:35
+    marginLeft: 15,
+    width: "50%",
   },
   image: {
     width: 100,

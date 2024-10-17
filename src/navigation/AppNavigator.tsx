@@ -4,6 +4,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React, { useEffect } from "react";
 import Welcome from "../components/pages/Welcome";
 import Home from "../components/pages/Home";
+import Sales from "../components/pages/Sales";
+import Labour from "../components/pages/Labour";
+import Budget from "../components/pages/Budget";
 
 const Stack = createStackNavigator();
 
@@ -24,19 +27,22 @@ const HomeScreen = () => {
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Splash"
-        component={WelcomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          component={WelcomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Sales" component={Sales} />
+        <Stack.Screen name="Labour" component={Labour} />
+        <Stack.Screen name="Budget" component={Budget} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

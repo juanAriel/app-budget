@@ -1,17 +1,21 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import ContentCard from '../molecules/ContentCard'
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import ContentCard from "../molecules/ContentCard";
+import { useNavigation } from "@react-navigation/native";
 
-const Home = ()=> {
+const Home = () => {
+  const navigation = useNavigation<any>();
+
+  const viewDetails = (name: string) => {
+    navigation.navigate(name);
+  };
+
   return (
     <View style={styles.container}>
-      <ContentCard />
-      <ContentCard />
-      <ContentCard />
+      <ContentCard onPres={viewDetails} />
     </View>
-    
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -34,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home
+export default Home;
