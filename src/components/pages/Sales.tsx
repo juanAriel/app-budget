@@ -1,13 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, Text, View } from "react-native";
 import Input from "../atoms/Input";
 import TextComponent from "../atoms/Text";
+import Button from "../atoms/Button";
 
 const Sales = () => {
   return (
     <View style={styles.container}>
       <TextComponent />
       <Input />
+      <Button title="Calcular"/>
     </View>
   );
 };
