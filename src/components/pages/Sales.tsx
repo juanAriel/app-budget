@@ -4,6 +4,7 @@ import Input from "../atoms/Input";
 import TextComponent from "../atoms/Text";
 import Button from "../atoms/Button";
 import { calculateBudget } from "../../utils/CalculateBudget";
+import { useNavigation } from "@react-navigation/native";
 
 const Sales = () => {
   const [priceUnit, setPriceUnit] = useState("");
@@ -11,6 +12,7 @@ const Sales = () => {
   const [discount, setDiscount] = useState("");
   const [taxRate, setTaxRate] = useState("");
   const [additionalCost, setAdditionalCost] = useState("");
+  const navigation = useNavigation<any>();
 
   const handleCalculate = () => {
     const price = parseFloat(priceUnit) || 0;
@@ -37,10 +39,15 @@ const Sales = () => {
       "Presupuesto Calculado",
       `El presupuesto total es: $${totalBudget.toFixed(2)}`
     );
+
+    
+      navigation.navigate('Result');
+  
+
   };
   return (
     <View style={styles.container}>
-      <TextComponent />
+      <TextComponent title="Datos"/>
       <Input
         placeholder="Precio por Unidad"
         onChangeText={setPriceUnit}
@@ -76,7 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#3D5A80",
     alignItems: "center",
-    // justifyContent: "center",
   },
 });
 

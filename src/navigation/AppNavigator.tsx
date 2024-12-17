@@ -7,6 +7,7 @@ import Home from "../components/pages/Home";
 import Sales from "../components/pages/Sales";
 import Labour from "../components/pages/Labour";
 import Budget from "../components/pages/Budget";
+import ResultCard from "../components/pages/Result";
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Sales" component={Sales} />
         <Stack.Screen name="Labour" component={Labour} />
         <Stack.Screen name="Budget" component={Budget} />
+        <Stack.Screen name="Result" component={ResultCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

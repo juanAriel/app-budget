@@ -1,10 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const TextComponent = () => {
+interface TextComponentProps {
+  title: string;
+  style?: object;
+}
+const TextComponent: React.FC<TextComponentProps> = ({ title, style }) => {
   return (
     <View>
-      <Text style={styles.text}>Datos</Text>
+      <Text style={[styles.text, style]}>{title}</Text>
     </View>
   );
 };
