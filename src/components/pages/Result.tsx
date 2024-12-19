@@ -4,14 +4,15 @@ import TextComponent from "../atoms/Text";
 import Button from "../atoms/Button";
 import ResultCard from "../molecules/ResultCard";
 
-const Result = () => {
+const Result = ({ route }) => {
+  const dates = route.params || {};
   const handleEvent = () => {
-    console.log("asda");
+    console.log("new view for option");
   };
   return (
     <View style={styles.container}>
       <TextComponent title="Result" />
-      <ResultCard />
+      <ResultCard dates={dates} />
       <Button title="New" style={styles.button} onPress={handleEvent} />
       <Button title="PDF" style={styles.button} onPress={handleEvent} />
       <Button title="Send" style={styles.button} onPress={handleEvent} />

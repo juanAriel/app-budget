@@ -2,17 +2,36 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import TextComponent from "../atoms/Text";
 
-const ResultCard = () => {
+interface DataItem {
+  label: string;
+  value: number;
+}
+interface ResultCardProps {
+  dates: DataItem[];
+}
+const ResultCard: React.FC<ResultCardProps> = ({ dates }) => {
+  console.log(dates[0].value);
   return (
     <View>
       <View style={styles.container}>
-        <TextComponent title="Precio:" style={styles.text}/>
-        <TextComponent title="Cantidad:" style={styles.text}/>
-        <TextComponent title="Descuento:" style={styles.text}/>
-        <TextComponent title="Impuesto:" style={styles.text}/>
-        <TextComponent title="Costos adicionales:" style={styles.text}/>
-        <View style = {styles.lineStyle} />
-        <TextComponent title="Total:" style={styles.text}/>
+        {dates.map((item) =>
+          item.label === "additional" ? (
+            <>
+              <TextComponent
+                key={item.label}
+                title={`${item.label}: ${item.value}`}
+                style={styles.text}
+              />
+              <View style={styles.lineStyle} />
+            </>
+          ) : (
+            <TextComponent
+              key={item.label}
+              title={`${item.label}: ${item.value}`}
+              style={styles.text}
+            />
+          )
+        )}
       </View>
     </View>
   );
@@ -25,18 +44,18 @@ const styles = StyleSheet.create({
     width: 350,
     borderRadius: 15,
     borderWidth: 2,
-    padding:25
+    padding: 25,
   },
-  text:{
-    color:"#000",
-    fontSize:20,
+  text: {
+    color: "#000",
+    fontSize: 20,
     fontWeight: "bold",
-    margin:10
+    margin: 10,
   },
-  lineStyle:{
+  lineStyle: {
     borderWidth: 1,
-    borderColor:'black',
+    borderColor: "black",
     width: 300,
-}
+  },
 });
 export default ResultCard;

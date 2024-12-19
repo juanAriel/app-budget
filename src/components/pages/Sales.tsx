@@ -32,22 +32,11 @@ const Sales = () => {
       { label: "additional", value: additional },
       { label: "totalBudget", value: totalBudget }
     );
-
-    console.log(result);
-
-    Alert.alert(
-      "Presupuesto Calculado",
-      `El presupuesto total es: $${totalBudget.toFixed(2)}`
-    );
-
-    
-      navigation.navigate('Result');
-  
-
+    navigation.navigate("Result", result);
   };
   return (
     <View style={styles.container}>
-      <TextComponent title="Datos"/>
+      <TextComponent title="Datos" />
       <Input
         placeholder="Precio por Unidad"
         onChangeText={setPriceUnit}
